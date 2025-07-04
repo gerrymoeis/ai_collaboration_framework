@@ -1,223 +1,83 @@
 ---
-trigger: manual
+command: "extract-design"
+description: "Extracts a scalable, token-based design system from a source image and creates a structured, framework-agnostic `design.json` file. This is a foundational step in the AI Collaboration Framework."
+author: "Gerry & Cascade"
+version: "2.0"
+args:
+  - name: "--from-image"
+    type: "path"
+    description: "The file path to the source image to be analyzed."
+    required: true
+  - name: "--output-file"
+    type: "path"
+    description: "The file path for the generated design tokens."
+    required: false
+    default: "design.json"
 ---
 
-# EXTRACT DESIGN WITH DESIGN TOKEN MANAGEMENT
+# Rule: Extract Design System (v2.0)
 
-## OBJECTIVE
-Extract a comprehensive and reusable design system from the image pasted, with enhanced design token management for better scalability and consistency in UI development.
+This rule governs the process of analyzing a source image and extracting a complete, structured design system into a `design.json` file. This process is interactive and adheres to the principles of our AI Collaboration Framework.
 
-## ANALYSIS INSTRUCTIONS
+## Phase 1: Analysis & Discovery
 
-### Examine the image to identify:
+The AI will analyze the provided image to identify all core design elements.
 
-**Color System**
-• Primary, secondary, and accent color palettes
-• Neutral colors (grays, whites, blacks)
-• Semantic colors (success, warning, error, info)
-• Color variations (light, medium, dark shades)
-• Opacity levels and transparency usage
+1.  **Identify Core Colors:** Detect all primary, secondary, accent, and semantic colors (e.g., for success, error, warning states).
+2.  **Identify Typography:** Detect font families, sizes, weights, and line heights for different text elements (headings, body text, captions).
+3.  **Identify Spacing & Layout:** Infer the base spacing unit and scale (e.g., 4px or 8px grid) and identify common layout patterns (e.g., margins, padding, container widths).
+4.  **Identify Core Components:** Recognize basic UI components like buttons, input fields, cards, and navigation bars.
+5.  **Present Findings:** The AI will present a summary of its findings before proceeding, ensuring transparency.
 
-**Typography Hierarchy**
-• Font families and font stacks
-• Font weights (light, regular, medium, bold)
-• Font sizes for headers (H1-H6)
-• Body text and caption sizing
-• Line heights and letter spacing
-• Text color applications
+## Phase 2: Interactive Tokenization (The Handshake)
 
-**Spacing System**
-• Consistent spacing units (4px, 8px, 16px grid systems)
-• Padding and margin patterns
-• Component spacing relationships
-• Layout gaps and gutters
+This phase turns the discovered elements into a structured system of design tokens. This is a collaborative process.
 
-**Component Design Tokens**
-• Button variations (primary, secondary, outline, text)
-• Form input styles and states
-• Card designs and elevation levels
-• Navigation patterns
-• Interactive element sizing
+1.  **Propose Semantic Names:** For each discovered value (e.g., `#007bff`), the AI will propose a semantic token name (e.g., `colors.brand.primary.500`).
+2.  **Request User Validation:** The AI will present the proposed token system to the user for confirmation and refinement.
+    -   *Example AI Prompt:* "I've identified the main blue as `colors.brand.primary.500`. Is this correct, or should it be named something else?"
+3.  **Define Component States:** For interactive components like buttons, the AI will explicitly ask the user to define tokens for different states (`hover`, `active`, `disabled`) that cannot be inferred from a static image.
 
-**Animation & Interaction Preferences**
-• Transition timing and easing
-• Hover state behaviors
-• Animation duration patterns
-• Interactive feedback styles
+## Phase 3: JSON Structure Generation (The Common Ground)
 
-## ENHANCED JSON STRUCTURE
+Once the token system is validated, the AI will generate the `design.json` file using a strict, predictable schema. This ensures the output is a reliable "Common Ground."
 
-Generate a design-system.json file with this comprehensive structure:
+The structure will separate global tokens from component-specific tokens, allowing for maximum scalability and reusability.
 
 ```json
 {
-  "metadata": {
-    "name": "Extracted Design System",
-    "version": "1.0.0",
-    "extractedFrom": "source-image",
-    "createdAt": "timestamp",
-    "framework": "framework-agnostic"
-  },
-  "tokens": {
+  "global": {
     "colors": {
-      "primary": {
-        "50": "#color-value",
-        "100": "#color-value", 
-        "500": "#color-value",
-        "900": "#color-value"
-      },
-      "semantic": {
-        "success": "#color-value",
-        "warning": "#color-value",
-        "error": "#color-value",
-        "info": "#color-value"
-      },
-      "neutral": {
-        "white": "#ffffff",
-        "gray-50": "#color-value",
-        "gray-900": "#color-value",
-        "black": "#000000"
-      }
+      "brand": { "primary": { "500": "#007bff" } },
+      "neutral": { "100": "#f8f9fa", "900": "#212529" },
+      "semantic": { "success": "#28a745", "error": "#dc3545" }
     },
     "typography": {
-      "fontFamily": {
-        "primary": "font-stack",
-        "secondary": "font-stack"
-      },
-      "fontSize": {
-        "xs": "size-value",
-        "sm": "size-value",
-        "base": "size-value",
-        "lg": "size-value",
-        "xl": "size-value",
-        "2xl": "size-value"
-      },
-      "fontWeight": {
-        "light": "300",
-        "normal": "400",
-        "medium": "500",
-        "bold": "700"
-      },
-      "lineHeight": {
-        "tight": "1.25",
-        "normal": "1.5",
-        "relaxed": "1.75"
-      }
+      "fonts": { "body": "Inter, sans-serif", "heading": "Poppins, sans-serif" },
+      "weights": { "regular": 400, "bold": 700 },
+      "lineHeights": { "body": 1.5, "heading": 1.2 }
     },
     "spacing": {
-      "xs": "4px",
-      "sm": "8px",
-      "md": "16px",
-      "lg": "24px",
-      "xl": "32px",
-      "2xl": "48px"
-    },
-    "borderRadius": {
-      "none": "0",
-      "sm": "4px",
-      "md": "8px",
-      "lg": "12px",
-      "full": "9999px"
-    },
-    "shadows": {
-      "sm": "shadow-definition",
-      "md": "shadow-definition",
-      "lg": "shadow-definition"
-    },
-    "animations": {
-      "duration": {
-        "fast": "150ms",
-        "normal": "300ms",
-        "slow": "500ms"
-      },
-      "easing": {
-        "linear": "linear",
-        "easeIn": "ease-in",
-        "easeOut": "ease-out",
-        "easeInOut": "ease-in-out"
-      }
+      "base": "8px",
+      "scale": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px" }
     }
   },
   "components": {
     "button": {
       "primary": {
-        "backgroundColor": "token-reference",
-        "color": "token-reference",
-        "padding": "token-reference",
-        "borderRadius": "token-reference",
-        "fontSize": "token-reference",
-        "fontWeight": "token-reference",
-        "transition": "token-reference"
-      },
-      "secondary": {},
-      "outline": {}
-    },
-    "card": {
-      "default": {
-        "backgroundColor": "token-reference",
-        "borderRadius": "token-reference",
-        "padding": "token-reference",
-        "boxShadow": "token-reference"
+        "background-color": "{colors.brand.primary.500}",
+        "color": "{colors.neutral.100}",
+        "padding": "{spacing.scale.sm} {spacing.scale.md}",
+        "hover": {
+          "background-color": "..."
+        }
       }
-    },
-    "input": {
-      "default": {
-        "backgroundColor": "token-reference",
-        "border": "token-reference",
-        "borderRadius": "token-reference",
-        "padding": "token-reference",
-        "fontSize": "token-reference"
-      }
-    }
-  },
-  "layout": {
-    "breakpoints": {
-      "sm": "640px",
-      "md": "768px",
-      "lg": "1024px",
-      "xl": "1280px"
-    },
-    "container": {
-      "maxWidth": "1200px",
-      "padding": "token-reference"
-    },
-    "grid": {
-      "columns": "12",
-      "gap": "token-reference"
     }
   }
 }
 ```
 
-## REQUIREMENTS
+## Phase 4: Final Review & Save (Agency & Empowerment)
 
-**Design Token Priorities**
-• Create scalable token hierarchy with meaningful names
-• Use consistent naming conventions (BEM-like approach)
-• Reference tokens within components (avoid hardcoded values)
-• Include semantic color mapping for accessibility
-• Document responsive behavior patterns
-
-**Quality Standards**
-• Ensure all extracted values are realistic and usable
-• Maintain design consistency across token definitions
-• Create logical relationships between similar tokens
-• Include fallback values for web-safe implementations
-
-**Output Standards**
-• Save to designs/design.json
-• Use proper JSON formatting with comments via description fields
-• Include token usage examples in component definitions
-• Omit literal text, imagery, or specific data from screenshots
-• Framework-independent structure for maximum reusability
-
-## VALIDATION CHECKLIST
-
-✅ Color palette is complete with proper contrast ratios  
-✅ Typography scale follows logical progression  
-✅ Spacing system uses consistent mathematical relationships  
-✅ Component tokens reference base design tokens  
-✅ Animation preferences are defined with realistic timing  
-✅ JSON structure is valid and well-organized  
-✅ Token names are semantic and developer-friendly  
-✅ All values are production-ready and accessible
+1.  **Present Final File:** The AI will present the complete, formatted `design.json` content to the user for a final review.
+2.  **Confirm & Save:** Upon user approval, the AI will save the file to the specified output path. The user always has the final say before any file is written to disk.

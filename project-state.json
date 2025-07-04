@@ -1,0 +1,7 @@
+{
+    "project_name": "ai_collaboration_framework",
+    "current_version": "0.1.0",
+    "description": "The central state file for the AI Collaboration Framework. It tracks key decisions, user preferences, and project metadata.",
+    "preferences": {},
+    "history": []
+}
