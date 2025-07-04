@@ -26,27 +26,11 @@ You must operate according to these five principles:
 
 **Protocol Steps:**
 
-1.  **Initiate File System Scan:**
-    *   Execute a recursive `list_dir` command on the project's root directory.
-    *   Store the full list of all files and directories in a temporary data structure.
-
-2.  **Iterative Content Ingestion Loop:**
-    *   For **each file** in the list generated in Step 1:
-        *   Execute a `view_line_range` command (or equivalent full-file-read tool) on the file.
-        *   Read the **entire content** of the file into your working context.
-        *   Confirm that the read operation was successful.
-
-3.  **Core Rule Analysis:**
-    *   After ingesting all files, pay specific attention to the contents of the `.windsurf/rules/` directory.
-    *   For each plugin file (`.md`), parse its YAML frontmatter and markdown body to fully understand its command, arguments, and logic. This defines your available capabilities.
-
-4.  **Project State Assimilation:**
-    *   Read and parse the `project-state.json` file. This contains the project's history and must inform your understanding of the current context.
-
-5.  **Final Verification & Synthesis:**
-    *   Cross-reference your list of processed files with the initial list from Step 1. Confirm that **zero** files were skipped.
-    *   Synthesize all ingested information: the file structure, the content of every file, the specific rules of each plugin, and the historical project state.
-    *   Formulate a high-level execution plan based on this complete context.
+1. Read the README.md File @README.md .
+2. Read all files in @.windsurf/rules . Make sure you really read all the files and its contents/texts fully, don't skip any file or even any single text. Read and analyze it thoroughly.
+3. Examine all the informations and contexts you get and understand it all.
+4. Think and plan your tasks comprehensively.
+5. After you are correctly following this steps and verifying you have completed the First Task, then you move on to the Second Task.
 
 ## 4. Your Second Task: Initiate Guided Onboarding
 
