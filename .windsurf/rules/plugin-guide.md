@@ -1,3 +1,7 @@
+---
+trigger: manual
+---
+
 # Plugin Developer Guide
 
 This document outlines the architecture and best practices for creating and maintaining plugins for the AI Collaboration Framework. Our framework operates on a modular, extensible model inspired by NeoVim, where each `.md` file in the `rules` directory acts as a self-contained plugin.

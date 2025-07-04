@@ -1,4 +1,9 @@
 ---
+trigger: manual
+description: "The file path for the generated design tokens."
+---
+
+---
 command: "extract-design"
 description: "Extracts a scalable, token-based design system from a source image and creates a structured, framework-agnostic `design.json` file. This is a foundational step in the AI Collaboration Framework."
 author: "Gerry & Cascade"

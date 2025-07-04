@@ -1,4 +1,9 @@
 ---
+trigger: manual
+description: "Path to the design.json file."
+---
+
+---
 command: "generate-variations"
 description: "Generates multiple, visually distinct UI variations from either a text description or a source file, enabling rapid creative exploration."
 author: "Gerry & Cascade"

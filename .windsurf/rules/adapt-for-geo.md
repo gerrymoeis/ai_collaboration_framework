@@ -1,4 +1,9 @@
 ---
+trigger: manual
+description: "The base directory where the regional variations will be saved."
+---
+
+---
 command: "adapt-for-geo"
 description: "Adapts a design for different geographical regions, creating culturally and legally appropriate UI variations."
 author: "Gerry & Cascade"

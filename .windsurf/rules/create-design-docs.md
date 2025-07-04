@@ -1,4 +1,9 @@
 ---
+trigger: manual
+description: "Path to the base design.json file for reference."
+---
+
+---
 command: "create-docs"
 description: "Generates a comprehensive documentation package from a final, implemented design version."
 author: "Gerry & Cascade"

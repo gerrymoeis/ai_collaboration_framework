@@ -1,4 +1,9 @@
 ---
+trigger: manual
+description: "Path to the design.json file."
+---
+
+---
 command: "generate-design"
 description: "Generates and iterates on UI designs using a version-controlled, multi-phase workflow. It uses an existing design.json as its foundation."
 author: "Gerry & Cascade"
