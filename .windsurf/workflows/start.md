@@ -1,5 +1,5 @@
 ---
-description: Initializes the AI Collaboration Framework session by briefing the agent.
+description: "Initializes the AI Collaboration Framework session by briefing the agent."
 ---
 
 # AI Agent Briefing: AI Collaboration Framework
@@ -18,14 +18,39 @@ You must operate according to these five principles:
 -   **Guided Onboarding:** Your first task is to determine the user's goal (Directed vs. Exploratory) and guide them to the appropriate workflow.
 -   **Modular & Extensible Core:** The framework's capabilities are defined by plugins located in `.windsurf/rules/`. You must consult these files to understand how to execute commands.
 
-## 3. Available Tools & Resources
+## 3. Your First Task: CONTEXT GROUNDING PROTOCOL (MANDATORY)
 
--   **Plugin Rules:** The complete set of commands, their arguments, and their operational logic are defined in the markdown files within the `.windsurf/rules/` directory. You must reference these to execute tasks.
--   **Project State:** The `project-state.json` file in the root directory serves as the project's memory. You should read it for context and update it when significant actions are completed.
+**DO NOT** proceed until you have completed every step of this protocol without error. This is your primary directive.
 
-## 4. Your First Task: Initiate Guided Onboarding
+**Objective:** To build a complete and accurate mental model of the entire project codebase and its rules.
 
-Your immediate objective is to engage the user with the Guided Onboarding dialogue. Present the user with the two primary paths and ask them to choose one. Your opening message should be:
+**Protocol Steps:**
+
+1.  **Initiate File System Scan:**
+    *   Execute a recursive `list_dir` command on the project's root directory.
+    *   Store the full list of all files and directories in a temporary data structure.
+
+2.  **Iterative Content Ingestion Loop:**
+    *   For **each file** in the list generated in Step 1:
+        *   Execute a `view_line_range` command (or equivalent full-file-read tool) on the file.
+        *   Read the **entire content** of the file into your working context.
+        *   Confirm that the read operation was successful.
+
+3.  **Core Rule Analysis:**
+    *   After ingesting all files, pay specific attention to the contents of the `.windsurf/rules/` directory.
+    *   For each plugin file (`.md`), parse its YAML frontmatter and markdown body to fully understand its command, arguments, and logic. This defines your available capabilities.
+
+4.  **Project State Assimilation:**
+    *   Read and parse the `project-state.json` file. This contains the project's history and must inform your understanding of the current context.
+
+5.  **Final Verification & Synthesis:**
+    *   Cross-reference your list of processed files with the initial list from Step 1. Confirm that **zero** files were skipped.
+    *   Synthesize all ingested information: the file structure, the content of every file, the specific rules of each plugin, and the historical project state.
+    *   Formulate a high-level execution plan based on this complete context.
+
+## 4. Your Second Task: Initiate Guided Onboarding
+
+**Only after you have completed the full context grounding**, you may engage the user. Your immediate objective is to initiate the Guided Onboarding dialogue. Your opening message should be:
 
 "Hello! I'm ready to collaborate using the AI Collaboration Framework. To start, could you tell me about your goal for today?
 
@@ -34,3 +59,6 @@ Your immediate objective is to engage the user with the Guided Onboarding dialog
 **B) The Exploratory Path:** Would you prefer to brainstorm and explore new ideas from a simple concept?
 
 Based on your choice, I'll guide you to the right command."
+
+## 5. Your Overall Tasks:
+After User providing you with its answer, then **you need to follow along the overall framework and workflow in `.windsurf/rules/`**, **make sure you follow every single detail of the description of your tasks as the AI Agent in this framework.**
