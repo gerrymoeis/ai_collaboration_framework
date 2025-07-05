@@ -2,106 +2,86 @@
 trigger: manual
 ---
 
-# EXTRACT DESIGN WITH DESIGN TOKEN MANAGEMENT
+# DESIGN SYSTEM EXTRACTION PROMPT
 
-## OBJECTIVE
-Extract a comprehensive and reusable design system from the image pasted, with enhanced design token management for better scalability and consistency in UI development.
+## CORE OBJECTIVE
+Extract a comprehensive, production-ready design system from the provided image by identifying visual patterns and creating structured design tokens.
 
-## ANALYSIS INSTRUCTIONS
+## ANALYSIS FRAMEWORK
 
-### Examine the image to identify:
+### VISUAL INSPECTION PRIORITIES
+1. **Color Analysis** - Document all colors with hex values and usage context
+2. **Typography Hierarchy** - Identify font families, sizes, weights, and relationships  
+3. **Spacing Patterns** - Map consistent spacing units and component relationships
+4. **Component Variations** - Catalog button styles, form elements, and interactive states
+5. **Layout Structure** - Note grid systems, breakpoints, and container patterns
 
-**Color System**
-• Primary, secondary, and accent color palettes
-• Neutral colors (grays, whites, blacks)
-• Semantic colors (success, warning, error, info)
-• Color variations (light, medium, dark shades)
-• Opacity levels and transparency usage
+### EXTRACTION METHODOLOGY
+**Step 1: Visual Inventory**
+- Scan systematically from top-left to bottom-right
+- Group similar elements (buttons, cards, text styles)
+- Note recurring patterns and variations
+- Identify semantic color usage (success, error, warning)
 
-**Typography Hierarchy**
-• Font families and font stacks
-• Font weights (light, regular, medium, bold)
-• Font sizes for headers (H1-H6)
-• Body text and caption sizing
-• Line heights and letter spacing
-• Text color applications
+**Step 2: Token Classification**
+- Primary colors (brand colors, most prominent)
+- Neutral colors (grays, backgrounds, borders)
+- Semantic colors (status indicators, alerts)
+- Typography scale (logical size progression)
+- Spacing scale (consistent mathematical relationships)
 
-**Spacing System**
-• Consistent spacing units (4px, 8px, 16px grid systems)
-• Padding and margin patterns
-• Component spacing relationships
-• Layout gaps and gutters
+**Step 3: Component Mapping**
+- Match visual elements to standard UI components
+- Document state variations (hover, active, disabled)
+- Note accessibility considerations (contrast ratios)
 
-**Component Design Tokens**
-• Button variations (primary, secondary, outline, text)
-• Form input styles and states
-• Card designs and elevation levels
-• Navigation patterns
-• Interactive element sizing
+## OUTPUT REQUIREMENTS
 
-**Animation & Interaction Preferences**
-• Transition timing and easing
-• Hover state behaviors
-• Animation duration patterns
-• Interactive feedback styles
-
-## ENHANCED JSON STRUCTURE
-
-Generate a design-system.json file with this comprehensive structure:
+### JSON STRUCTURE
+Generate a `design-system.json` with this exact structure:
 
 ```json
 {
   "metadata": {
     "name": "Extracted Design System",
     "version": "1.0.0",
-    "extractedFrom": "source-image",
-    "createdAt": "timestamp",
-    "framework": "framework-agnostic"
+    "source": "image-analysis",
+    "timestamp": "current-date"
   },
   "tokens": {
     "colors": {
       "primary": {
-        "50": "#color-value",
-        "100": "#color-value", 
-        "500": "#color-value",
-        "900": "#color-value"
-      },
-      "semantic": {
-        "success": "#color-value",
-        "warning": "#color-value",
-        "error": "#color-value",
-        "info": "#color-value"
+        "50": "#hex-value",
+        "500": "#hex-value",
+        "900": "#hex-value"
       },
       "neutral": {
         "white": "#ffffff",
-        "gray-50": "#color-value",
-        "gray-900": "#color-value",
+        "gray-100": "#hex-value",
+        "gray-900": "#hex-value",
         "black": "#000000"
+      },
+      "semantic": {
+        "success": "#hex-value",
+        "warning": "#hex-value",
+        "error": "#hex-value"
       }
     },
     "typography": {
       "fontFamily": {
-        "primary": "font-stack",
-        "secondary": "font-stack"
+        "primary": "font-stack-here"
       },
       "fontSize": {
-        "xs": "size-value",
-        "sm": "size-value",
-        "base": "size-value",
-        "lg": "size-value",
-        "xl": "size-value",
-        "2xl": "size-value"
+        "sm": "14px",
+        "base": "16px",
+        "lg": "18px",
+        "xl": "20px",
+        "2xl": "24px"
       },
       "fontWeight": {
-        "light": "300",
         "normal": "400",
         "medium": "500",
         "bold": "700"
-      },
-      "lineHeight": {
-        "tight": "1.25",
-        "normal": "1.5",
-        "relaxed": "1.75"
       }
     },
     "spacing": {
@@ -109,115 +89,57 @@ Generate a design-system.json file with this comprehensive structure:
       "sm": "8px",
       "md": "16px",
       "lg": "24px",
-      "xl": "32px",
-      "2xl": "48px"
+      "xl": "32px"
     },
     "borderRadius": {
-      "none": "0",
       "sm": "4px",
       "md": "8px",
-      "lg": "12px",
-      "full": "9999px"
-    },
-    "shadows": {
-      "sm": "shadow-definition",
-      "md": "shadow-definition",
-      "lg": "shadow-definition"
-    },
-    "animations": {
-      "duration": {
-        "fast": "150ms",
-        "normal": "300ms",
-        "slow": "500ms"
-      },
-      "easing": {
-        "linear": "linear",
-        "easeIn": "ease-in",
-        "easeOut": "ease-out",
-        "easeInOut": "ease-in-out"
-      }
+      "lg": "12px"
     }
   },
   "components": {
     "button": {
       "primary": {
-        "backgroundColor": "token-reference",
-        "color": "token-reference",
-        "padding": "token-reference",
-        "borderRadius": "token-reference",
-        "fontSize": "token-reference",
-        "fontWeight": "token-reference",
-        "transition": "token-reference"
-      },
-      "secondary": {},
-      "outline": {}
-    },
-    "card": {
-      "default": {
-        "backgroundColor": "token-reference",
-        "borderRadius": "token-reference",
-        "padding": "token-reference",
-        "boxShadow": "token-reference"
+        "backgroundColor": "colors.primary.500",
+        "color": "colors.neutral.white",
+        "padding": "spacing.sm spacing.md",
+        "borderRadius": "borderRadius.sm"
       }
-    },
-    "input": {
-      "default": {
-        "backgroundColor": "token-reference",
-        "border": "token-reference",
-        "borderRadius": "token-reference",
-        "padding": "token-reference",
-        "fontSize": "token-reference"
-      }
-    }
-  },
-  "layout": {
-    "breakpoints": {
-      "sm": "640px",
-      "md": "768px",
-      "lg": "1024px",
-      "xl": "1280px"
-    },
-    "container": {
-      "maxWidth": "1200px",
-      "padding": "token-reference"
-    },
-    "grid": {
-      "columns": "12",
-      "gap": "token-reference"
     }
   }
 }
 ```
 
-## REQUIREMENTS
+### QUALITY STANDARDS
+- **Accurate Values**: All hex colors, font sizes, and spacing must reflect actual measurements
+- **Consistent Naming**: Use semantic names (primary, secondary) over descriptive names (blue, red)
+- **Token References**: Components must reference base tokens, not hardcoded values
+- **Realistic Measurements**: Ensure extracted values are web-standard and implementable
 
-**Design Token Priorities**
-• Create scalable token hierarchy with meaningful names
-• Use consistent naming conventions (BEM-like approach)
-• Reference tokens within components (avoid hardcoded values)
-• Include semantic color mapping for accessibility
-• Document responsive behavior patterns
+### VALIDATION CHECKLIST
+Before finalizing, verify:
+- [ ] All visible colors are captured with correct hex values
+- [ ] Typography scale follows logical progression (1.2x or 1.25x ratios)
+- [ ] Spacing uses consistent increments (4px, 8px base units)
+- [ ] Component tokens reference base design tokens
+- [ ] JSON is valid and properly formatted
 
-**Quality Standards**
-• Ensure all extracted values are realistic and usable
-• Maintain design consistency across token definitions
-• Create logical relationships between similar tokens
-• Include fallback values for web-safe implementations
+## EXECUTION GUIDELINES
 
-**Output Standards**
-• Save to designs/design.json
-• Use proper JSON formatting with comments via description fields
-• Include token usage examples in component definitions
-• Omit literal text, imagery, or specific data from screenshots
-• Framework-independent structure for maximum reusability
+**DO:**
+- Be precise with color extraction using visual analysis
+- Create logical token hierarchies with clear relationships
+- Document only what's visually present in the image
+- Use production-ready values and measurements
 
-## VALIDATION CHECKLIST
+**DON'T:**
+- Invent values not visible in the image
+- Include specific text content or copy
+- Create overly complex token structures
+- Use non-standard naming conventions
 
-✅ Color palette is complete with proper contrast ratios  
-✅ Typography scale follows logical progression  
-✅ Spacing system uses consistent mathematical relationships  
-✅ Component tokens reference base design tokens  
-✅ Animation preferences are defined with realistic timing  
-✅ JSON structure is valid and well-organized  
-✅ Token names are semantic and developer-friendly  
-✅ All values are production-ready and accessible
+**OUTPUT FORMAT:**
+Save as `design-system.json` with clean, readable formatting. Include brief explanations for token choices when patterns aren't immediately obvious.
+
+## SUCCESS CRITERIA
+The extracted design system should enable a developer to recreate the visual design with high fidelity using only the provided tokens and component definitions.
